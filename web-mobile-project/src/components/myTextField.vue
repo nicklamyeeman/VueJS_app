@@ -17,6 +17,7 @@
     },
     methods: {
         submit: function() {
+            console.log(this.tempMessage);
             this.$emit("inputData", this.tempMessage);
             this.tempMessage = "";
         }

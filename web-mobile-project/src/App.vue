@@ -1,21 +1,20 @@
 <template web>
   <div class="w-page">
-    <div class="w-container">    
+    <div class="w-container">
       <img src="~/assets/logo.png" alt="logo" height="20%" width="20%">
       <HelloWorld :msg="msg"/>
-      <myButton/>
-      <myTextField/>
+      <myTextField @inputData="updateData" />
+      <myButton :msg="textFieldData" />
     </div>
   </div>
 </template>
+
 <template native>
   <Page>
     <ActionBar :title="navbarTitle"/>
     <GridLayout rows="auto, auto">
-      <HelloWorld :msg="msg"/>
+      <myButton/>
     </GridLayout>
-    <myButton/>
-    <myTextField/>
   </Page>
 </template>
 <script>
@@ -36,9 +35,13 @@
       return {
         navbarTitle: `App.vue`,
         msg: `Mode=${VUE_APP_MODE} and Platform=${VUE_APP_PLATFORM}`,
+        textFieldData: '',
       };
     },
     methods: {
+      updateData(data) {
+        this.textFieldData = data;
+      }
     }
   };
 </script>
